@@ -97,9 +97,9 @@ public class Register extends AppCompatActivity {
         }
     }
 
-    public  boolean isPasswordValid(String password,String confirmpass)
+    public  boolean isPasswordValid(String passwordval,String confirmpass)
     {
-        return password.equals(confirmpass);
+        return passwordval.equals(confirmpass);
     }
     public  boolean isEmailValid(String emailid)
     {
@@ -131,7 +131,8 @@ public class Register extends AppCompatActivity {
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (!TextUtils.isEmpty(passwordid) && !isPasswordValid(passwordid,confirmpass)) {
+        if (!TextUtils.isEmpty(passwordid) && !TextUtils.isEmpty(confirmpass) && !isPasswordValid(passwordid,confirmpass)) {
+
             password.setError(getString(R.string.error_invalid_password));
             focusView = password;
             cancel = true;
@@ -194,6 +195,7 @@ public class Register extends AppCompatActivity {
             if (success) {
                 Intent intent=new Intent(Register.this,MapsActivity.class);
                 startActivity(intent);
+                finish();
             } else {
             }
         }
