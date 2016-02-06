@@ -12,6 +12,9 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality. 
     -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
@@ -36,6 +39,19 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="svce.ac.in.svcetransport.SplashScreen" />
         </activity>
+
+
+        <service
+            android:enabled="true"
+            android:name=".MonitorService" >
+        </service>
+        <receiver
+            android:enabled="true"
+            android:name=".LocationReciever" >
+            <intent-filter >
+                <action android:name="svce.ac.in.svcetransport.intent.action.LOCATION" />
+            </intent-filter>
+        </receiver>
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
